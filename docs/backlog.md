@@ -30,7 +30,6 @@ CristiHE
    - view register page 
    - register with email and password
    - login with email and password
-   - logout
 
 ## change password 
    - view change password page
@@ -64,6 +63,8 @@ CristiHE
 
 ## manage user
    - view users page
+   - view change password page
    - update user info
+   - update rank
    - as admin, deactivate user
    - as admin, activate user
