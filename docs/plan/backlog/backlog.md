@@ -26,10 +26,16 @@ CristiHE
    - task
 
 # 4. create backlog
+
+## login
+   - view login page
+   - login with email and password
+   - register
+   - log out
+
 ## register
    - view register page 
    - register with email and password
-   - login with email and password
 
 ## change password 
    - view change password page
@@ -41,9 +47,9 @@ CristiHE
    - update project
    - delete project
    - add users to project
+   - remove user from project
 
 ## manage sprint
-   - view sprint list
    - create sprint
    - update sprint
    - delete sprint
@@ -60,11 +66,12 @@ CristiHE
    - update task
    - delete task list
    - add tasks to project
+   - remove task from project
 
 ## manage user
    - view users page
    - view change password page
    - update user info
-   - update rank, as admin
+   - as admin, update rank
    - as admin, deactivate user
    - as admin, activate user
