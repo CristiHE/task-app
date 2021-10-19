@@ -65,6 +65,6 @@ CristiHE
    - view users page
    - view change password page
    - update user info
-   - update rank
+   - update rank, as admin
    - as admin, deactivate user
    - as admin, activate user
