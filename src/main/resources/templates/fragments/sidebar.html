@@ -1,0 +1,60 @@
+<!doctype html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <div th:replace="fragments/head-css :: head-css"/>
+</head>
+
+<body>
+
+<div th:fragment="sidebar(project)">
+    <div class="container-fluid">
+        <div class="row flex-nowrap">
+            <div class="col-auto col-lg-2 px-sm-2 px-0 bg-light">
+                <div class="d-flex flex-column align-items-center align-items-sm-start px-3 pt-2 text-white min-vh-100">
+
+                    <!-- project name -->
+                    <div class="d-flex align-items-center pb-3 mb-md-0 me-md-auto text-black text-decoration-none">
+                        <i class="fas fa-project-diagram"></i> <span class="fs-5 d-none d-sm-inline"
+                                                                     th:text="${project.name}"></span>
+                    </div>
+
+                    <ul class="nav nav-pills flex-column mb-sm-auto mb-0 align-items-center align-items-sm-start"
+                        id="menu">
+
+                        <!-- backlog -->
+                        <li>
+                            <a class="nav-link px-0 align-middle"
+                               th:href="@{/projects/{projectId}/backlog(projectId = ${project.id})}">
+                                <i class="fas fa-tasks"></i> <span class="ms-1 d-none d-sm-inline">Backlog</span>
+                            </a>
+                        </li>
+
+                        <!-- board -->
+                        <li>
+                            <a class="nav-link px-0 align-middle"
+                               th:href="@{/projects/{projectId}/board(projectId = ${project.id})}">
+                                <i class="fas fa-columns"></i> <span class="ms-1 d-none d-sm-inline">Board</span>
+                            </a>
+                        </li>
+
+                        <!-- project settings -->
+                        <li>
+                            <a class="nav-link px-0 align-middle"
+                               th:href="@{/projects/{projectId}/edit(projectId = ${project.id})}">
+                                <i class="fas fa-cog"></i> <span class="ms-1 d-none d-sm-inline">Project settings</span>
+                            </a>
+                        </li>
+
+                    </ul>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div th:replace="fragments/footer-js :: footer-js"/>
+</body>
+
+</html>

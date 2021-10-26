@@ -1,0 +1,45 @@
+<!DOCTYPE html >
+<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+<head>
+    <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+    <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="./js/login.js"></script>
+    <link rel="stylesheet" type="text/css" href="./css/style.css">
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <a class="navbar-brand" href="#">Navbar</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+        <div class="navbar-nav">
+            <a sec:authorize="isAuthenticated()" class="nav-item nav-link" href="/users">Users <span class="sr-only">(current)</span></a>
+            <a sec:authorize="isAnonymous()" class="nav-item nav-link" href="/login">Login</a>
+            <a sec:authorize="isAnonymous()" class="nav-item nav-link active" href="/registration">Register</a>
+            <a sec:authorize="isAuthenticated()" class="nav-item nav-link" href="/logout">Logout</a>
+        </div>
+    </div>
+</nav>
+
+<form method="post" action="/registration" th:object="${userDto}">
+    <input type ="text" placeholder="Name" th:field="*{name}">
+    <label th:if="${#fields.hasErrors('name')}" th:class="'error'" th:errors="*{name}" class="col-lg-4 control-label" style="color:red;" ></label>
+    <br>
+    <input type ="email" placeholder="Email"th:field="*{email}">
+    <label th:if="${#fields.hasErrors('email')}" th:class="'error'" th:errors="*{email}" class="col-lg-4 control-label" style="color:red;" ></label>
+    <br>
+    <input type ="date" placeholder="Date of birth" th:field="*{dateOfBirth}">
+    <label th:if="${#fields.hasErrors('dateOfBirth')}" th:class="'error'" th:errors="*{dateOfBirth}" class="col-lg-4 control-label" style="color:red;" ></label>
+    <br>
+    <input type ="password" placeholder="Password" th:field="*{password}">
+    <label th:if="${#fields.hasErrors('password')}" th:class="'error'" th:errors="*{password}" class="col-lg-4 control-label" style="color:red;" ></label>
+    <br>
+
+    <button type="submit">Register</button>
+</form>
+</body>
+</html>

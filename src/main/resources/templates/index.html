@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <div th:replace="fragments/head-css :: head-css"/>
+    <title>Landing</title>
+</head>
+
+<body>
+
+<header>
+
+</header>
+
+<div class="container-fluid">
+
+    <div class="container">
+        <div class="row justify-content-md-center">
+            <div class="row">
+                <h2>Agile</h2>
+            </div>
+        </div>
+    </div>
+
+    <div>
+        <a th:href="@{/login}">
+            <button class="btn btn-secondary" id="login" name="login" type="button">Log in</button>
+        </a>
+
+        <a th:href="@{/register}">
+            <button class="btn btn-primary" id="register" name="register" type="submit">Sign up</button>
+        </a>
+    </div>
+
+</div>
+
+<footer>
+
+</footer>
+
+<div th:replace="fragments/footer-js :: footer-js"/>
+
+</body>
+</html>
