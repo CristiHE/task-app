@@ -30,7 +30,7 @@ public class UserController {
     @GetMapping("/register")
     public String showRegisterPage(Model model) {
         model.addAttribute("user", new User());
-        return "user/register";
+        return "/register";
     }
 
     @PostMapping("/register/add")

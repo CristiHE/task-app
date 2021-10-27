@@ -1,4 +1,4 @@
-package com.sda.project.controller.project;
+package com.sda.project.controller;
 
 import com.sda.project.model.Project;
 import com.sda.project.service.ProjectService;

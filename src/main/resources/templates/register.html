@@ -6,7 +6,7 @@
     <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
     <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
     <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-    <title>Login</title>
+    <title>Register</title>
 </head>
 
 <body>
@@ -26,23 +26,17 @@
 
         <!-- Login Form -->
         <form>
-            <input class="fadeIn second" id="login" placeholder="Email" name="login" type="text">
+            <input class="fadeIn second" id="email" placeholder="Email" name="login" type="text">
+            <input class="fadeIn third" id="firstname" placeholder="First Name" name="password" type="text">
+            <input class="fadeIn second" id="lastname" placeholder="Last Name" name="login" type="text">
             <input class="fadeIn third" id="password" placeholder="Password" name="password" type="text">
+            <input class="fadeIn third" id="confirmpassword" placeholder="Confirm Password" name="password" type="text">
         </form>
         <div>
-            <a th:href="@{/login}">
-                <input class="fadeIn fourth" id="loginbutton" value="Log In" type="submit">
-            </a>
-            <a th:href="@{/register}">
+            <a th:href="@{/register/add}">
                 <input class="fadeIn fourth" id="register" value="Register" name="register" type="submit">
             </a>
         </div>
-
-        <!-- Remind Passowrd -->
-        <div id="formFooter">
-            <a class="underlineHover" href="#">Forgot Password?</a>
-        </div>
-
     </div>
 </div>
 <footer>
