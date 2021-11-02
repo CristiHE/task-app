@@ -2,6 +2,7 @@
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <div th:replace="fragments/head-css :: head-css"/>
+    <link th:href="@{/css/login.css}" th:rel="stylesheet"/>
     <title>Landing</title>
 </head>
 
@@ -11,32 +12,21 @@
 
 </header>
 
-<div class="container-fluid">
+<div class="container">
+    <br/>
+    <br/>
+    <br/>
+    <br/>
 
-    <div class="container">
-        <div class="row justify-content-md-center">
-            <div class="row">
-                <h2>Agile</h2>
-            </div>
+    <center><b id="login-name">Task-App </b></center>
+    <div class="form-group">
+        <input type="submit" class="btn btn-success" value="Register" style="border-radius:0px;">
+        <input type="reset" class="btn btn-danger" value="Reset" style="border-radius:0px;">
+    </div>
+
         </div>
     </div>
-
-    <div>
-        <a th:href="@{/login}">
-            <button class="btn btn-secondary" id="login" name="login" type="button">Log in</button>
-        </a>
-
-        <a th:href="@{/register}">
-            <button class="btn btn-primary" id="register" name="register" type="submit">Sign up</button>
-        </a>
-    </div>
-
 </div>
-
-<footer>
-
-</footer>
-
 <div th:replace="fragments/footer-js :: footer-js"/>
 
 </body>
