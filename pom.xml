@@ -5,7 +5,7 @@
     <modelVersion>4.0.0</modelVersion>
 
     <groupId>com.sda</groupId>
-    <artifactId>task-app</artifactId>
+    <artifactId>mica-piata</artifactId>
     <version>1.0-SNAPSHOT</version>
 
     <!-- set of spring boot dependencies -->
@@ -27,6 +27,8 @@
 
     <dependencies>
         <!-- version inherited from parent -->
+
+        <!-- @Repository JpaRepository -->
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-data-jpa</artifactId>
@@ -44,22 +46,27 @@
             <scope>runtime</scope>
         </dependency>
 
+        <!-- @Controller -->
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-web</artifactId>
         </dependency>
 
+        <!-- SecurityConfig -->
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-security</artifactId>
         </dependency>
 
         <!-- utils -->
+
+        <!-- @Valid @Validated -->
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-validation</artifactId>
         </dependency>
 
+        <!-- @Getter @Setter -->
         <dependency>
             <groupId>org.projectlombok</groupId>
             <artifactId>lombok</artifactId>
@@ -67,18 +74,22 @@
         </dependency>
 
         <!-- frontend -->
+
+        <!-- th:each th:if th:text -->
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-thymeleaf</artifactId>
         </dependency>
 
         <!-- optional, it brings useful tags to display spring security stuff -->
+        <!-- th:sec -->
         <dependency>
             <groupId>org.thymeleaf.extras</groupId>
             <artifactId>thymeleaf-extras-springsecurity5</artifactId>
         </dependency>
 
         <!-- optional, support for java 8 time -->
+        <!-- temporals.format -->
         <dependency>
             <groupId>org.thymeleaf.extras</groupId>
             <artifactId>thymeleaf-extras-java8time</artifactId>
@@ -91,12 +102,14 @@
             <version>${bootstrap.version}</version>
         </dependency>
 
+        <!-- icons -->
         <dependency>
             <groupId>org.webjars</groupId>
             <artifactId>font-awesome</artifactId>
             <version>${font-awesome.version}</version>
         </dependency>
 
+        <!-- css selector -->
         <dependency>
             <groupId>org.webjars</groupId>
             <artifactId>jquery</artifactId>
@@ -117,12 +130,14 @@
             <scope>runtime</scope>
         </dependency>
 
+        <!-- rest API docs -->
         <dependency>
             <groupId>io.springfox</groupId>
             <artifactId>springfox-boot-starter</artifactId>
             <version>3.0.0</version>
         </dependency>
 
+        <!-- @SpringBootTest @Test @Mock @InjectMocks -->
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-test</artifactId>

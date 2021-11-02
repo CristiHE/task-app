@@ -1,6 +1,7 @@
 package com.sda.project.controller;
 
 import com.sda.project.controller.exception.ResourceAlreadyExistsException;
+import com.sda.project.dto.UserDto;
 import com.sda.project.model.User;
 import com.sda.project.service.UserService;
 import org.slf4j.Logger;
@@ -17,8 +18,8 @@ import org.springframework.web.bind.annotation.PostMapping;
 public class UserController {
 
     private static final Logger log = LoggerFactory.getLogger(UserController.class);
-
-    private final UserService userService;
+    @Autowired
+    private UserService userService;
 
     @Autowired
     public UserController(UserService userService) {
@@ -26,36 +27,34 @@ public class UserController {
     }
 
     // register
-
+    // mapping
     @GetMapping("/register")
-    public String showRegisterPage(Model model) {
-        model.addAttribute("user", new User());
-        return "/register";
+    public String getRegisterPage(Model model) {
+        UserDto userDto = new UserDto();
+        model.addAttribute("userDto", userDto);
+        // folder / page name
+        return "user/register";
     }
 
     @PostMapping("/register/add")
-    public String add(Model model, @ModelAttribute User user) {
-        try {
-            userService.save(user);
-            return "redirect:/login";
-        } catch (ResourceAlreadyExistsException e) {
-            String errorMessage = e.getMessage();
-            model.addAttribute("errorMessage", errorMessage);
-            return "user/register";
-        }
+    public String register(@ModelAttribute("userDto") UserDto userDto) {
+        userService.save(userDto);
+        return "user/login";
     }
 
     // login
 
     @GetMapping("/login")
-    public String showLoginForm() {
-        return "login";
+    public String getLoginPage(Model model) {
+        UserDto userDto = new UserDto();
+        model.addAttribute("userDto", userDto);
+        return "user/login";
     }
 
-    @GetMapping("/login-error")
-    public String loginError(Model model) {
-        model.addAttribute("loginError", true);
-        return "login";
+    @PostMapping("/login")
+    public String login(@ModelAttribute("userDto") UserDto userDto) {
+        userService.findByEmail(userDto.getEmail());
+        return "redirect:user/home";
     }
 
     // crud

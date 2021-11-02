@@ -1,20 +1,15 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <div th:replace="fragments/head-css :: head-css"/>
-    <title>Home</title>
+    <link th:href="@{/css/login.css}" th:rel="stylesheet"/>
 </head>
+
 <body>
 
-<div th:replace="fragments/header :: navbar"/>
-
-<div class="container img-fluid" style="width:500px;">
-    <img th:src="@{/images/users.png}"/>
-    <div>Start your awesome journey today!</div>
-</div>
-
-<div th:replace="fragments/footer :: footer"/>
-<div th:replace="fragments/footer-js :: footer-js"/>
+<h1>
+    Home page
+</h1>
 
 </body>
 </html>

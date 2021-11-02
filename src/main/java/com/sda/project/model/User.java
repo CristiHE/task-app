@@ -27,7 +27,8 @@ public class User {
                     name = "role_id", referencedColumnName = "id"))
     private Set<Role> roles = new HashSet<>();
 
-    public User() {
+    public User()  {
+        this.enabled = true;
     }
 
     public User(String email, String password, String firstName, String lastName) {
