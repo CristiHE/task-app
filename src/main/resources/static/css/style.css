@@ -1,31 +1,35 @@
 @import url('https://fonts.googleapis.com/css?family=Mukta');
-body{
-  font-family: 'Mukta', sans-serif;
-	height:100vh;
-	min-height:550px;
-	background-image: url(http://www.planwallpaper.com/static/images/Free-Wallpaper-Nature-Scenes.jpg);
-	background-repeat: no-repeat;
-	background-size:cover;
-	background-position:center;
-	position:relative;
+
+body {
+    font-family: 'Mukta', sans-serif;
+    height:100vh;
+    min-height:550px;
+    background-image: url(http://www.planwallpaper.com/static/images/Free-Wallpaper-Nature-Scenes.jpg);
+    background-repeat: no-repeat;
+    background-size:cover;
+    background-position:center;
+    position:relative;
     overflow-y: hidden;
 }
-a{
-  text-decoration:none;
-  color:#444444;
+
+a {
+    text-decoration:none;
+    color:#444444;
 }
-.login-reg-panel{
+
+.login-reg-panel {
     position: relative;
     top: 50%;
     transform: translateY(-50%);
-	text-align:center;
+    text-align:center;
     width:70%;
-	right:0;left:0;
+    right:0;left:0;
     margin:auto;
     height:400px;
     background-color: rgba(236, 48, 20, 0.9);
 }
-.white-panel{
+
+.white-panel {
     background-color: rgba(255,255, 255, 1);
     height:500px;
     position:absolute;
@@ -36,15 +40,19 @@ a{
     z-index:0;
     box-shadow: 0 0 15px 9px #00000096;
 }
-.login-reg-panel input[type="radio"]{
+
+.login-reg-panel input[type="radio"] {
     position:relative;
     display:none;
 }
+
 .login-reg-panel{
     color:#B8B8B8;
 }
+
 .login-reg-panel #label-login,
-.login-reg-panel #label-register{
+
+.login-reg-panel #label-register {
     border:1px solid #9E9E9E;
     padding:5px 5px;
     width:150px;
@@ -55,7 +63,8 @@ a{
     font-weight: 600;
     font-size: 18px;
 }
-.login-info-box{
+
+.login-info-box {
     width:30%;
     padding:0 50px;
     top:20%;
@@ -63,7 +72,8 @@ a{
     position:absolute;
     text-align:left;
 }
-.register-info-box{
+
+.register-info-box {
     width:30%;
     padding:0 50px;
     top:20%;
@@ -72,10 +82,12 @@ a{
     text-align:left;
 
 }
-.right-log{right:50px !important;}
 
-.login-show,
-.register-show{
+.right-log {
+    right:50px !important;
+}
+
+.login-show, register-show {
     z-index: 1;
     display:none;
     opacity:0;
@@ -84,10 +96,12 @@ a{
     text-align:left;
     padding:50px;
 }
+
 .show-log-panel{
     display:block;
     opacity:0.9;
 }
+
 .login-show input[type="text"], .login-show input[type="password"]{
     width: 100%;
     display: block;
@@ -96,6 +110,7 @@ a{
     border: 1px solid #b5b5b5;
     outline: none;
 }
+
 .login-show input[type="button"] {
     max-width: 150px;
     width: 100%;
@@ -108,12 +123,13 @@ a{
     float:right;
     cursor:pointer;
 }
-.login-show a{
+
+.login-show a {
     display:inline-block;
     padding:10px 0;
 }
 
-.register-show input[type="text"], .register-show input[type="password"]{
+.register-show input[type="text"], .register-show input[type="password"] {
     width: 100%;
     display: block;
     margin:20px 0;
@@ -121,6 +137,7 @@ a{
     border: 1px solid #b5b5b5;
     outline: none;
 }
+
 .register-show input[type="button"] {
     max-width: 150px;
     width: 100%;
@@ -133,6 +150,7 @@ a{
     float:right;
     cursor:pointer;
 }
+
 .credit {
     position:absolute;
     bottom:10px;
@@ -147,7 +165,8 @@ a{
     letter-spacing: 1px;
     z-index: 99;
 }
-a{
+
+a {
   text-decoration:none;
   color:#2c7715;
 }

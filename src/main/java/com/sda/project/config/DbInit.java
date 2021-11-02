@@ -1,7 +1,11 @@
 package com.sda.project.config;
 
 import com.sda.project.controller.exception.ResourceAlreadyExistsException;
-import com.sda.project.model.*;
+import com.sda.project.model.Privilege;
+import com.sda.project.model.PrivilegeType;
+import com.sda.project.model.Role;
+import com.sda.project.model.RoleType;
+import com.sda.project.model.User;
 import com.sda.project.repository.PrivilegeRepository;
 import com.sda.project.repository.RoleRepository;
 import com.sda.project.repository.UserRepository;
@@ -43,11 +47,9 @@ public class DbInit {
             createRoleIfNotFound(RoleType.USER, Set.of(readPrivilege, writePrivilege));
 
             // create main admin, admin, user
-            User mainAdmin = createMainAdmin();
-            userRepository.save(mainAdmin);
-
-            User admin = createAdmin();
-            User user = createUser();
+            createMainAdmin();
+            createAdmin();
+            createUser();
         };
     }
 
