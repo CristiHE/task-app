@@ -18,32 +18,12 @@
         <div class="col-md-4 form-group required">
             <label for="name" class="form-label">Name</label>
             <input class="form-control" id="name" placeholder="Project name" required th:field="*{name}" type="text">
-            <div class="invalid-feedback">
-                A project name can't be empty.
-            </div>
         </div>
 
         <div class="col-md-2 form-group required">
             <label for="projectKey" class="form-label">Key</label>
             <input class="form-control" id="projectKey" placeholder="Project key" required th:field="*{projectKey}"
                    type="text">
-            <div class="invalid-feedback">
-                Use 2 or 3 uppercase letters.
-            </div>
-        </div>
-
-        <div class="col-md-4 form-group required">
-            <label for="projectLead" class="form-label">Project lead</label>
-            <select class="form-select" id="projectLead" required th:field="${project.projectLead}">
-                <option selected th:value="null">Select a project lead</option>
-                <option th:each="user : ${users}"
-                        th:text="|${user.firstName} ${user.lastName}|"
-                        th:value="${user.id}">
-                </option>
-            </select>
-            <div class="invalid-feedback">
-                You need a lead for your project.
-            </div>
         </div>
 
     </div>
@@ -57,12 +37,8 @@
 
 </form>
 
-<!-- error -->
-<div class="alert alert-danger" role="alert" th:if="${errorMessage}" th:utext="${errorMessage}"></div>
-
 <div th:replace="fragments/footer :: footer"/>
 <div th:replace="fragments/footer-js :: footer-js"/>
-<script th:src="@{/js/validation.js}"></script>
 
 </body>
 </html>

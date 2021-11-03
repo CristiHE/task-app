@@ -27,6 +27,12 @@ public class User {
                     name = "role_id", referencedColumnName = "id"))
     private Set<Role> roles = new HashSet<>();
 
+    @OneToMany(
+            mappedBy = "user",
+            cascade = CascadeType.ALL,
+            orphanRemoval = true)
+    private Set<Project> projects = new HashSet<>();
+
     public User()  {
         this.enabled = true;
     }
@@ -39,6 +45,17 @@ public class User {
         this.enabled = true;
     }
 
+    public void addRole(Role role) {
+        this.roles.add(role);
+    }
+
+    public void addProject(Project project) {
+        projects.add(project);
+        project.setUser(this);
+    }
+
+    // getters & setters
+    
     public Long getId() {
         return id;
     }
@@ -94,11 +111,7 @@ public class User {
     public void setRoles(Set<Role> roles) {
         this.roles = roles;
     }
-
-    public void addRole(Role role) {
-        this.roles.add(role);
-    }
-
+    
     @Override
     public String toString() {
         return "User{" +

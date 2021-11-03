@@ -25,7 +25,6 @@
         <tr>
             <th scope="col">Name</th>
             <th scope="col">Key</th>
-            <th scope="col">Lead</th>
             <th scope="col"></th>
         </tr>
         </thead>
@@ -36,9 +35,6 @@
             </td>
             <td>
                 <p th:text="${project.projectKey}"></p>
-            </td>
-            <td>
-                <p th:text="|${project.projectLead.firstName} ${project.projectLead.lastName}|"></p>
             </td>
             <td>
                 <!-- edit button -->
@@ -56,9 +52,6 @@
     </table>
 
 </div>
-
-<!-- error -->
-<div th:if="${errorMessage}" th:utext="${errorMessage}" class="alert alert-danger" role="alert"></div>
 
 <div th:replace="fragments/footer :: footer"/>
 <div th:replace="fragments/footer-js :: footer-js"/>

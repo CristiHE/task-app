@@ -3,10 +3,12 @@ package com.sda.project.config;
 import com.sda.project.controller.exception.ResourceAlreadyExistsException;
 import com.sda.project.model.Privilege;
 import com.sda.project.model.PrivilegeType;
+import com.sda.project.model.Project;
 import com.sda.project.model.Role;
 import com.sda.project.model.RoleType;
 import com.sda.project.model.User;
 import com.sda.project.repository.PrivilegeRepository;
+import com.sda.project.repository.ProjectRepository;
 import com.sda.project.repository.RoleRepository;
 import com.sda.project.repository.UserRepository;
 import org.slf4j.Logger;
@@ -33,6 +35,9 @@ public class DbInit {
     @Autowired
     private UserRepository userRepository;
 
+    @Autowired
+    private ProjectRepository projectRepository;
+
     @Bean
     public CommandLineRunner initialData() {
         return args -> {
@@ -50,6 +55,9 @@ public class DbInit {
             createMainAdmin();
             createAdmin();
             createUser();
+
+            // create projects
+            createProjects();
         };
     }
 
@@ -88,8 +96,20 @@ public class DbInit {
         return userRepository.save(user);
     }
 
+    private void createProjects() {
+        Project project1 = new Project();
+        project1.setProjectKey("SDA");
+        project1.setName("Software stuff");
+        projectRepository.save(project1);
+
+        Project project2 = new Project();
+        project2.setProjectKey("Agile");
+        project2.setName("Agile stuff");
+        projectRepository.save(project2);
+    }
+
     @Transactional
-    Role createRoleIfNotFound(RoleType type, Set<Privilege> privileges) {
+    private Role createRoleIfNotFound(RoleType type, Set<Privilege> privileges) {
         return (Role) roleRepository.findByType(type)
                 .map(existingPrivilege -> {
                     throw new ResourceAlreadyExistsException("role already exists");
@@ -102,7 +122,7 @@ public class DbInit {
     }
 
     @Transactional
-    Privilege createPrivilegeIfNotFound(PrivilegeType name) {
+    private Privilege createPrivilegeIfNotFound(PrivilegeType name) {
         return (Privilege) privilegeRepository.findByType(name)
                 .map(existingPrivilege -> {
                     throw new ResourceAlreadyExistsException("privilege already exists");

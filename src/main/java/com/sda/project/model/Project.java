@@ -15,7 +15,7 @@ public class Project {
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "user_id")
-    private User projectLead;
+    private User user;
 
     public Project() {
     }
@@ -42,6 +42,14 @@ public class Project {
 
     public void setProjectKey(String projectKey) {
         this.projectKey = projectKey;
+    }
+
+    public User getUser() {
+        return user;
+    }
+
+    public void setUser(User user) {
+        this.user = user;
     }
 
     @Override
