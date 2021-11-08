@@ -1,16 +1,8 @@
 package com.sda.project.config;
 
 import com.sda.project.controller.exception.ResourceAlreadyExistsException;
-import com.sda.project.model.Privilege;
-import com.sda.project.model.PrivilegeType;
-import com.sda.project.model.Project;
-import com.sda.project.model.Role;
-import com.sda.project.model.RoleType;
-import com.sda.project.model.User;
-import com.sda.project.repository.PrivilegeRepository;
-import com.sda.project.repository.ProjectRepository;
-import com.sda.project.repository.RoleRepository;
-import com.sda.project.repository.UserRepository;
+import com.sda.project.model.*;
+import com.sda.project.repository.*;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -38,6 +30,9 @@ public class DbInit {
     @Autowired
     private ProjectRepository projectRepository;
 
+    @Autowired
+    private SprintRepository sprintRepository;
+
     @Bean
     public CommandLineRunner initialData() {
         return args -> {
@@ -58,6 +53,9 @@ public class DbInit {
 
             // create projects
             createProjects();
+
+            // create sprint
+            createSprints();
         };
     }
 
@@ -106,6 +104,18 @@ public class DbInit {
         project2.setProjectKey("Agile");
         project2.setName("Agile stuff");
         projectRepository.save(project2);
+    }
+
+    private void createSprints() {
+        Sprint sprint1 = new Sprint();
+        sprint1.setSprintKey("SDA");
+        sprint1.setName("Sprint 1");
+        sprintRepository.save(sprint1);
+
+        Sprint sprint2 = new Sprint();
+        sprint2.setSprintKey("SDA");
+        sprint2.setName("Sprint 2");
+        sprintRepository.save(sprint2);
     }
 
     @Transactional

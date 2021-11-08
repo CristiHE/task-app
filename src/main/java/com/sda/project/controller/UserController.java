@@ -46,7 +46,7 @@ public class UserController {
         } catch (ResourceAlreadyExistsException e) {
             String errorMessage = e.getMessage();
             model.addAttribute("errorMessage", errorMessage);
-            return "user/register";
+            return "user/login";
         }
     }
 

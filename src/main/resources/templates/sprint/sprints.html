@@ -1,0 +1,60 @@
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <div th:replace="fragments/head-css :: head-css"/>
+    <title>Projects</title>
+</head>
+
+<body>
+
+<div th:replace="fragments/header :: navbar"/>
+
+<div class="container">
+    <div class="d-flex mb-3">
+        <div class="me-auto p-2">
+            <h1>Sprints</h1>
+        </div>
+        <div class="p-2">
+            <a th:href="@{/sprints/add}">
+                <button class="btn btn-primary" type="button">Create sprint</button>
+            </a>
+        </div>
+    </div>
+
+    <table class="table">
+        <thead>
+        <tr>
+            <th scope="col">Name</th>
+            <th scope="col">Key</th>
+            <th scope="col"></th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="sprint : ${sprints}">
+            <td>
+                <a th:href="@{/sprints/{id}/board(id = ${sprint.id})}" th:text="${sprint.name}"></a>
+            </td>
+            <td>
+                <p th:text="${sprint.sprintKey}"></p>
+            </td>
+            <td>
+                <!-- edit button -->
+                <a th:href="@{/sprints/{id}/edit(id = ${sprint.id})}">
+                    <i class="fas fa-edit"></i>
+                </a>
+
+                <!-- delete button -->
+                <a th:href="@{/sprints/{id}/delete(id = ${sprint.id})}">
+                    <i class="fas fa-trash"></i>
+                </a>
+            </td>
+        </tr>
+        </tbody>
+    </table>
+
+</div>
+
+<div th:replace="fragments/footer :: footer"/>
+<div th:replace="fragments/footer-js :: footer-js"/>
+
+</body>
+</html>
