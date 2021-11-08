@@ -16,36 +16,15 @@
 
     <div>
 
+        <!-- sprint name -->
         <div class="col-md-4 form-group required">
             <label for="name" class="form-label">Name</label>
             <input class="form-control" id="name" placeholder="Sprint name" required th:field="*{name}" type="text">
-            <div class="invalid-feedback">
-                A sprint name can't be empty.
-            </div>
         </div>
 
-        <div class="col-md-2 form-group required">
-            <label for="sprintKey" class="form-label">Key</label>
-            <input class="form-control" id="sprintKey" placeholder="Sprint key" required th:field="*{sprintKey}"
-                   type="text">
-            <div class="invalid-feedback">
-                Use 2 or 3 uppercase letters.
-            </div>
-        </div>
+        <!-- TODO: start -->
 
-        <div class="col-md-4 form-group required">
-            <label for="sprintLead" class="form-label">Sprint lead</label>
-            <select class="form-select" id="sprintLead" required th:field="${sprint.sprintLead}">
-                <option selected th:value="null">Select a sprint lead</option>
-                <option th:each="user : ${users}"
-                        th:text="|${user.firstName} ${user.lastName}|"
-                        th:value="${user.id}">
-                </option>
-            </select>
-            <div class="invalid-feedback">
-                You need a lead for your Sprint.
-            </div>
-        </div>
+        <!-- TODO: end -->
 
     </div>
 

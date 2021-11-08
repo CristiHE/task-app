@@ -33,19 +33,19 @@
             </div>
         </div>
 
-        <div class="col-md-4 form-group required">
-            <label for="projectLead" class="form-label">Project lead</label>
-            <select class="form-select" id="projectLead" required th:field="${project.projectLead}">
-                <option selected th:value="null">Select a project lead</option>
-                <option th:each="user : ${users}"
-                        th:text="|${user.firstName} ${user.lastName}|"
-                        th:value="${user.id}">
-                </option>
-            </select>
-            <div class="invalid-feedback">
-                You need a lead for your project.
-            </div>
-        </div>
+<!--        <div class="col-md-4 form-group required">-->
+<!--            <label for="projectLead" class="form-label">Project lead</label>-->
+<!--            <select class="form-select" id="projectLead" required th:field="${project.projectLead}">-->
+<!--                <option selected th:value="null">Select a project lead</option>-->
+<!--                <option th:each="user : ${users}"-->
+<!--                        th:text="|${user.firstName} ${user.lastName}|"-->
+<!--                        th:value="${user.id}">-->
+<!--                </option>-->
+<!--            </select>-->
+<!--            <div class="invalid-feedback">-->
+<!--                You need a lead for your project.-->
+<!--            </div>-->
+<!--        </div>-->
 
     </div>
 

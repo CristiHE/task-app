@@ -14,15 +14,15 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 
 @Controller
-public class SprintControler {
+public class SprintController {
 
-    private static final Logger log = LoggerFactory.getLogger(SprintControler.class);
+    private static final Logger log = LoggerFactory.getLogger(SprintController.class);
 
     private final SprintService sprintService;
     private final UserService userService;
 
     @Autowired
-    public SprintControler(SprintService sprintService, UserService userService) {
+    public SprintController(SprintService sprintService, UserService userService) {
         this.sprintService = sprintService;
         this.userService = userService;
     }
@@ -32,7 +32,7 @@ public class SprintControler {
         return "sprint/sprints";
     }
 
-    @GetMapping("/sprint/add")
+    @GetMapping("/sprints/add")
     public String showAddForm(Model model) {
         model.addAttribute("sprint", new Sprint());
         model.addAttribute("users", userService.findAll());
