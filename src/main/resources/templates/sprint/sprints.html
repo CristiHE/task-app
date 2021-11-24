@@ -1,7 +1,7 @@
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
     <div th:replace="fragments/head-css :: head-css"/>
-    <title>Projects</title>
+    <title>Sprints</title>
 </head>
 
 <body>
@@ -24,17 +24,13 @@
         <thead>
         <tr>
             <th scope="col">Name</th>
-            <th scope="col">Key</th>
             <th scope="col"></th>
         </tr>
         </thead>
         <tbody>
         <tr th:each="sprint : ${sprints}">
             <td>
-                <a th:href="@{/sprints/{id}/board(id = ${sprint.id})}" th:text="${sprint.name}"></a>
-            </td>
-            <td>
-                <p th:text="${sprint.sprintKey}"></p>
+                <a th:href="@{/sprints/{id} (id = ${sprint.id})}" th:text="${sprint.name}"></a>
             </td>
             <td>
                 <!-- edit button -->

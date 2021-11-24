@@ -1,7 +1,7 @@
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
     <div th:replace="fragments/head-css :: head-css"/>
-    <title>Projects</title>
+    <title>Tasks</title>
 </head>
 
 <body>
@@ -11,11 +11,11 @@
 <div class="container">
     <div class="d-flex mb-3">
         <div class="me-auto p-2">
-            <h1>Projects</h1>
+            <h1>Tasks</h1>
         </div>
         <div class="p-2">
-            <a th:href="@{/projects/add}">
-                <button class="btn btn-primary" type="button">Create project</button>
+            <a th:href="@{/tasks/add}">
+                <button class="btn btn-primary" type="button">Create task</button>
             </a>
         </div>
     </div>
@@ -23,27 +23,27 @@
     <table class="table">
         <thead>
         <tr>
-            <th scope="col">Name</th>
-            <th scope="col">Key</th>
+            <th scope="col">Summary</th>
+            <th scope="col">Description</th>
             <th scope="col"></th>
         </tr>
         </thead>
         <tbody>
-        <tr th:each="project : ${projects}">
+        <tr th:each="task : ${tasks}">
             <td>
-                <a th:href="@{/projects/{id}/board(id = ${project.id})}" th:text="${project.name}"></a>
+                <a th:href="@{/tasks/{id} (id = ${task.id})}" th:text="${task.summary}"></a>
             </td>
             <td>
-                <p th:text="${project.projectKey}"></p>
+                <p th:text="${task.description}"></p>
             </td>
             <td>
                 <!-- edit button -->
-                <a th:href="@{/projects/{id}/edit(id = ${project.id})}">
+                <a th:href="@{/tasks/{id}/edit(id = ${task.id})}">
                     <i class="fas fa-edit"></i>
                 </a>
 
                 <!-- delete button -->
-                <a th:href="@{/projects/{id}/delete(id = ${project.id})}">
+                <a th:href="@{/tasks/{id}/delete(id = ${task.id})}">
                     <i class="fas fa-trash"></i>
                 </a>
             </td>

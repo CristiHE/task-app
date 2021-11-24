@@ -1,8 +1,22 @@
 package com.sda.project.config;
 
 import com.sda.project.controller.exception.ResourceAlreadyExistsException;
-import com.sda.project.model.*;
-import com.sda.project.repository.*;
+import com.sda.project.model.Privilege;
+import com.sda.project.model.PrivilegeType;
+import com.sda.project.model.Project;
+import com.sda.project.model.Role;
+import com.sda.project.model.RoleType;
+import com.sda.project.model.Sprint;
+import com.sda.project.model.Task;
+import com.sda.project.model.TaskStatus;
+import com.sda.project.model.TaskType;
+import com.sda.project.model.User;
+import com.sda.project.repository.PrivilegeRepository;
+import com.sda.project.repository.ProjectRepository;
+import com.sda.project.repository.RoleRepository;
+import com.sda.project.repository.SprintRepository;
+import com.sda.project.repository.TaskRepository;
+import com.sda.project.repository.UserRepository;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -11,6 +25,7 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.time.LocalDate;
 import java.util.Set;
 
 @Configuration
@@ -33,6 +48,9 @@ public class DbInit {
     @Autowired
     private SprintRepository sprintRepository;
 
+    @Autowired
+    private TaskRepository taskRepository;
+
     @Bean
     public CommandLineRunner initialData() {
         return args -> {
@@ -47,28 +65,60 @@ public class DbInit {
             createRoleIfNotFound(RoleType.USER, Set.of(readPrivilege, writePrivilege));
 
             // create main admin, admin, user
-            createMainAdmin();
             createAdmin();
             createUser();
 
+            User user = userRepository.findByEmail("user@gmail.com").get();
+
             // create projects
-            createProjects();
+            Project project1 = new Project();
+            project1.setProjectKey("SDA");
+            project1.setName("Software stuff");
+            projectRepository.save(project1);
+
+            Project project2 = new Project();
+            project2.setProjectKey("Agile");
+            project2.setName("Agile stuff");
+            projectRepository.save(project2);
 
             // create sprint
-            createSprints();
-        };
-    }
+            Sprint sprint1 = new Sprint();
+            sprint1.setName("Sprint 1");
+            sprint1.setDateFrom(LocalDate.now());
+            sprint1.setDateTo(LocalDate.now().plusDays(14));
+            sprint1.setProject(project1);
+            sprintRepository.save(sprint1);
 
-    private User createMainAdmin() {
-        User admin = new User(
-                "main@gmail.com",
-                "{bcrypt}$2y$12$92ZkDrGVS3W5ZJI.beRlEuyRCPrIRlkEHz6T.7MVmH38l4/VAHhyi",
-                "jon",
-                "snow");
-        Role adminRole = roleRepository.findByType(RoleType.ADMIN).orElseThrow();
-        admin.addRole(adminRole);
-        userRepository.save(admin);
-        return admin;
+            Sprint sprint2 = new Sprint();
+            sprint2.setName("Sprint 2");
+            sprint2.setDateFrom(LocalDate.now());
+            sprint2.setDateTo(LocalDate.now().plusDays(14));
+            sprint2.setProject(project1);
+            sprintRepository.save(sprint2);
+
+            // create tasks
+            Task task1 = new Task();
+            task1.setProject(project1);
+            task1.setSummary("summary");
+            task1.setStoryPoints(5);
+            task1.setDescription("description");
+            task1.setStatus(TaskStatus.TODO);
+            task1.setTaskType(TaskType.STORY);
+            task1.setAssignee(user);
+            task1.setSprint(sprint1);
+            taskRepository.save(task1);
+
+            Task task2 = new Task();
+            task2.setProject(project1);
+            task2.setSummary("summary");
+            task2.setStoryPoints(5);
+            task2.setDescription("description");
+            task2.setStatus(TaskStatus.TODO);
+            task2.setTaskType(TaskType.TASK);
+            task2.setAssignee(user);
+            task2.setSprint(sprint1);
+            taskRepository.save(task2);
+        };
     }
 
     private User createAdmin() {
@@ -92,30 +142,6 @@ public class DbInit {
         Role userRole = roleRepository.findByType(RoleType.USER).orElseThrow();
         user.addRole(userRole);
         return userRepository.save(user);
-    }
-
-    private void createProjects() {
-        Project project1 = new Project();
-        project1.setProjectKey("SDA");
-        project1.setName("Software stuff");
-        projectRepository.save(project1);
-
-        Project project2 = new Project();
-        project2.setProjectKey("Agile");
-        project2.setName("Agile stuff");
-        projectRepository.save(project2);
-    }
-
-    private void createSprints() {
-        Sprint sprint1 = new Sprint();
-        sprint1.setSprintKey("SDA");
-        sprint1.setName("Sprint 1");
-        sprintRepository.save(sprint1);
-
-        Sprint sprint2 = new Sprint();
-        sprint2.setSprintKey("SDA");
-        sprint2.setName("Sprint 2");
-        sprintRepository.save(sprint2);
     }
 
     @Transactional

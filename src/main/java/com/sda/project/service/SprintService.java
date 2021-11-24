@@ -10,7 +10,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
-import java.util.Optional;
 
 @Service
 public class SprintService {
@@ -27,14 +26,7 @@ public class SprintService {
     public Sprint save(Sprint sprint) {
         log.info("save sprint {}", sprint);
 
-        String name = sprint.getName();
-        Optional<Sprint> existingSprintOptional = sprintRepository.findByNameIgnoreCase(name);
-        if (existingSprintOptional.isPresent()) {
-            log.error("sprint with name {} already exists", name);
-            throw new ResourceAlreadyExistsException("sprint with name " + name + " already exists");
-        } else {
-            return sprintRepository.save(sprint);
-        }
+        return sprintRepository.save(sprint);
     }
 
     public List<Sprint> findAll() {

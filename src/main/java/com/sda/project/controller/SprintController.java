@@ -26,6 +26,7 @@ public class SprintController {
         this.sprintService = sprintService;
         this.userService = userService;
     }
+
     @GetMapping("/sprints")
     public String showSprintsPage(Model model) {
         model.addAttribute("sprints", sprintService.findAll());

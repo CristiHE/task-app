@@ -1,40 +1,33 @@
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
     <div th:replace="fragments/head-css :: head-css"/>
-    <title>Project add</title>
+    <title>Task add</title>
 </head>
 
 <body>
 
 <div th:replace="fragments/header :: navbar"/>
 
-<h2>Add project details</h2>
-<p>You can change these details anytime in your project settings.</p>
+<h2>Add task details</h2>
 
 <form class="row g-3 needs-validation" novalidate
-      th:action="@{/projects/add}"
-      th:object="${project}" method="post">
+      method="post"
+      th:action="@{/tasks/add}" th:object="${task}">
 
     <div>
-        
-        <div class="col-md-4 form-group required">
-            <label for="name" class="form-label">Name</label>
-            <input class="form-control" id="name" placeholder="Project name" required th:field="*{name}" type="text">
-        </div>
 
-        <div class="col-md-2 form-group required">
-            <label for="projectKey" class="form-label">Key</label>
-            <input class="form-control" id="projectKey" placeholder="Project key" required th:field="*{projectKey}"
-                   type="text">
+        <div class="col-md-4 form-group required">
+            <label class="form-label" for="summary">Summary</label>
+            <input class="form-control" id="summary" placeholder="Summary" required th:field="*{summary}" type="text">
         </div>
 
     </div>
 
     <div class="col-12">
-        <a th:href="@{/projects}">
+        <a th:href="@{/tasks}">
             <button class="btn btn-secondary" id="cancel" type="button">Cancel</button>
         </a>
-        <button class="btn btn-primary" id="save" type="submit">Create project</button>
+        <button class="btn btn-primary" id="save" type="submit">Create task</button>
     </div>
 
 </form>

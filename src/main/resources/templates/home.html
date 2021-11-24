@@ -2,15 +2,17 @@
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
     <div th:replace="fragments/head-css :: head-css"/>
-    <title>Title</title>
+    <title>Home</title>
 </head>
-
 <body>
-<div>
-    <h1>Home</h1>
+
+<div th:replace="fragments/header :: navbar"/>
+
+<div class="container img-fluid">
+    <div>Start your awesome journey today!</div>
 </div>
 
 <div th:replace="fragments/footer-js :: footer-js"/>
-</body>
 
+</body>
 </html>

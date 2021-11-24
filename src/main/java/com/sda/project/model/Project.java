@@ -1,6 +1,15 @@
 package com.sda.project.model;
 
-import javax.persistence.*;
+import javax.persistence.CascadeType;
+import javax.persistence.Entity;
+import javax.persistence.FetchType;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
+import javax.persistence.Table;
 import java.util.HashSet;
 import java.util.Objects;
 import java.util.Set;
@@ -26,6 +35,11 @@ public class Project {
     private Set<Sprint> sprints = new HashSet<>();
 
     public Project() {
+    }
+
+    public void addSprint(Sprint sprint) {
+        sprints.add(sprint);
+        sprint.setProject(this);
     }
 
     public Long getId() {
@@ -58,6 +72,14 @@ public class Project {
 
     public void setUser(User user) {
         this.user = user;
+    }
+
+    public Set<Sprint> getSprints() {
+        return sprints;
+    }
+
+    public void setSprints(Set<Sprint> sprints) {
+        this.sprints = sprints;
     }
 
     @Override

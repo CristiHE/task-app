@@ -1,8 +1,21 @@
 package com.sda.project.model;
 
 
-import javax.persistence.*;
+import org.springframework.format.annotation.DateTimeFormat;
+
+import javax.persistence.Entity;
+import javax.persistence.FetchType;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
+import javax.persistence.Table;
+import java.time.LocalDate;
+import java.util.HashSet;
 import java.util.Objects;
+import java.util.Set;
 
 @Entity
 @Table(name = "sprint")
@@ -12,26 +25,44 @@ public class Sprint {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
     private String name;
-    private String sprintKey;
+
+    @DateTimeFormat(pattern = "yyyy-MM-dd")
+    private LocalDate dateFrom;
+
+    @DateTimeFormat(pattern = "yyyy-MM-dd")
+    private LocalDate dateTo;
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "project_id")
     private Project project;
 
-    public Sprint (){
+    @OneToMany(
+            mappedBy = "sprint",
+            fetch = FetchType.LAZY)
+    private Set<Task> tasks = new HashSet<>();
+
+    public Sprint() {
     }
 
-    public Long getId() { return id; }
+    public Sprint(String name) {
+        this.name = name;
+    }
 
-    public void setId(Long id) { this.id = id; }
+    public Long getId() {
+        return id;
+    }
 
-    public String getName() { return name; }
+    public void setId(Long id) {
+        this.id = id;
+    }
 
-    public void setName(String name) { this.name = name; }
+    public String getName() {
+        return name;
+    }
 
-    public String getSprintKey() { return sprintKey; }
-
-    public void setSprintKey(String sprintKey) { this.sprintKey = sprintKey; }
+    public void setName(String name) {
+        this.name = name;
+    }
 
     public Project getProject() {
         return project;
@@ -39,6 +70,30 @@ public class Sprint {
 
     public void setProject(Project project) {
         this.project = project;
+    }
+
+    public LocalDate getDateFrom() {
+        return dateFrom;
+    }
+
+    public void setDateFrom(LocalDate dateFrom) {
+        this.dateFrom = dateFrom;
+    }
+
+    public LocalDate getDateTo() {
+        return dateTo;
+    }
+
+    public void setDateTo(LocalDate dateTo) {
+        this.dateTo = dateTo;
+    }
+
+    public Set<Task> getTasks() {
+        return tasks;
+    }
+
+    public void setTasks(Set<Task> tasks) {
+        this.tasks = tasks;
     }
 
     @Override
@@ -59,7 +114,8 @@ public class Sprint {
         return "Sprint{" +
                 "id=" + id +
                 ", name='" + name + '\'' +
-                ", sprintKey='" + sprintKey + '\'' +
+                ", dateFrom=" + dateFrom +
+                ", dateTo=" + dateTo +
                 '}';
     }
 }
