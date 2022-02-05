@@ -33,6 +33,13 @@ public class ProjectController {
         return "project/projects";
     }
 
+    @GetMapping("/projects/{id}/board")
+    public String showProjectById(Model model, @PathVariable Long id) {
+        model.addAttribute("project", projectService.findById(id));
+        model.addAttribute("users", userService.findAll());
+        return "project/board";
+    }
+
     @GetMapping("/projects/add")
     public String showAddForm(Model model) {
         model.addAttribute("project", new Project());

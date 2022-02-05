@@ -1,6 +1,8 @@
 package com.sda.project.controller;
 
+import com.sda.project.model.Project;
 import com.sda.project.model.Sprint;
+import com.sda.project.service.ProjectService;
 import com.sda.project.service.SprintService;
 import com.sda.project.service.UserService;
 import org.slf4j.Logger;
@@ -20,6 +22,7 @@ public class SprintController {
 
     private final SprintService sprintService;
     private final UserService userService;
+
 
     @Autowired
     public SprintController(SprintService sprintService, UserService userService) {

@@ -28,7 +28,7 @@ public class User {
     private Set<Role> roles = new HashSet<>();
 
     @OneToMany(
-            mappedBy = "user",
+                mappedBy = "user",
             cascade = CascadeType.ALL,
             orphanRemoval = true)
     private Set<Project> projects = new HashSet<>();

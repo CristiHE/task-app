@@ -1,7 +1,7 @@
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
     <div th:replace="fragments/head-css :: head-css"/>
-    <title>Sprints</title>
+    <title>Board</title>
 </head>
 
 <body background="/images/background.png">
@@ -11,7 +11,7 @@
 <div class="container">
     <div class="d-flex mb-3">
         <div class="me-auto p-2">
-            <h1>Sprints</h1>
+            <h1>Board</h1>
         </div>
         <div class="p-2">
             <a th:href="@{/sprints/add}">
@@ -30,7 +30,7 @@
         <tbody>
         <tr th:each="sprint : ${sprints}">
             <td>
-                <a th:href="@{/sprints/{id} (id = ${sprint.id})}" th:text="${sprint.name}"></a>
+                <a th:href="@{/sprints/{id} (id = ${sprint.project_id})}" th:text="${sprint.name}"></a>
             </td>
             <td>
                 <!-- edit button -->
